@@ -2,7 +2,6 @@ import Link from "next/link";
 import { caseStudies, site } from "@/lib/caseStudies";
 import { siteUrl } from "./layout";
 import { CopyEmail } from "@/components/CopyEmail";
-import { ZoomImage } from "@/components/ZoomImage";
 import { asset } from "@/lib/asset";
 
 const stats = [
@@ -99,12 +98,24 @@ export default function Home() {
               business outcome attached, then the AI automation flagship. */}
           <div className="work-list">
             {caseStudies.map((c) => (
-              <Link href={`/work/${c.slug}`} className="work-item" key={c.slug}>
-                <div className="idx">{c.index}</div>
-                <ZoomImage
-                  src={c.thumb}
-                  cap={c.card.title}
+              <Link
+                href={`/work/${c.slug}`}
+                className="work-item"
+                key={c.slug}
+                aria-label={`Read the ${c.card.title} case study`}
+              >
+                <div className="idx" aria-hidden>{c.index}</div>
+                {/* Plain img, not ZoomImage: the thumbnail is the most
+                    click-inviting part of the row, so it must navigate like the
+                    rest of it. Zooming lives on the case study's proof gallery. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   className="wi-thumb"
+                  src={asset(c.thumb)}
+                  alt=""
+                  aria-hidden
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="body">
                   <div className="t">{c.card.title}</div>
@@ -114,6 +125,11 @@ export default function Home() {
                       <span className="tag" key={t}>{t}</span>
                     ))}
                   </div>
+                  {/* Always visible, not hover-revealed — this is the only
+                      affordance touch devices ever get. */}
+                  <span className="wi-cta">
+                    Read case study <span className="arrow" aria-hidden>→</span>
+                  </span>
                 </div>
                 <div className="go" aria-hidden>→</div>
               </Link>
