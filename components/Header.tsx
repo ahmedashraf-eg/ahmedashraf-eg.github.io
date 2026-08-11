@@ -11,6 +11,7 @@ export function Header() {
         <nav className="nav">
           <Link href="/#work" className="nav-hide">Work</Link>
           <Link href="/#about" className="nav-hide">About</Link>
+          <Link href="/#hiring" className="nav-hide">Hiring</Link>
           <a href={`mailto:${site.email}`} className="nav-cta">Contact</a>
         </nav>
       </div>

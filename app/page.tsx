@@ -6,10 +6,10 @@ import { ZoomImage } from "@/components/ZoomImage";
 import { asset } from "@/lib/asset";
 
 const stats = [
-  { v: "13", l: "locations live in production" },
-  { v: "100K+", l: "leads processed through the CRM" },
-  { v: "310+", l: "review replies, human-approved" },
-  { v: "96", l: "automated tests on the CRM" },
+  { v: "2×", l: "patient volume at the clinic I run growth for" },
+  { v: "310+", l: "AI replies published, every one human-approved" },
+  { v: "100K+", l: "leads processed by the CRM I built" },
+  { v: "13", l: "locations running my systems in production" },
 ];
 
 const principles = [
@@ -22,14 +22,15 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: site.name,
-  jobTitle: "Full-stack developer (web, mobile & AI)",
+  jobTitle: "AI automation engineer",
   email: `mailto:${site.email}`,
   url: siteUrl,
   address: { "@type": "PostalAddress", addressLocality: "Cairo", addressCountry: "EG" },
   sameAs: [site.github, site.linkedin],
   knowsAbout: [
-    "React", "Next.js", "React Native", "Node.js", "PostgreSQL",
-    "AI integration", "Claude API", "Model Context Protocol",
+    "AI automation", "Workflow automation", "AI agents", "Claude API",
+    "Model Context Protocol", "Make.com", "Python", "FastAPI", "Webhooks",
+    "Node.js", "PostgreSQL", "Next.js", "React Native",
   ],
 };
 
@@ -45,18 +46,19 @@ export default function Home() {
         <div className="container">
           <span className="avail">
             <span className="dot" aria-hidden />
-            <span><b>Available</b> for freelance &amp; contract · Remote · UTC+2</span>
+            <span><b>Available</b> for full-time, part-time &amp; contract · Remote · UTC+2</span>
           </span>
-          <span className="kicker">Full-stack developer · Web, Mobile &amp; AI</span>
+          <span className="kicker">AI Automation Engineer · LLM Workflows, Agents &amp; Integrations</span>
           <h1>
-            Software,
+            Automation,
             <br />
-            <strong>thoughtfully made.</strong>
+            <strong>built to stay running.</strong>
           </h1>
           <p className="lede">
-            I&apos;m {site.name} — I design and ship <b>production</b> web and mobile
-            apps end to end, from the database to the deployed product, with a
-            specialty in <b>AI integration</b>. Real, live systems — not prototypes.
+            I&apos;m {site.name} — I design, ship and operate <b>production</b> AI
+            automation: LLM workflows, agent systems and the integrations around
+            them, end to end, with a person in the loop where it matters. Real,
+            live systems — not prototypes.
           </p>
           <div className="hero-actions">
             <Link href="#work" className="btn btn-solid">
@@ -93,6 +95,8 @@ export default function Home() {
               <h2>Four systems, running in production.</h2>
             </div>
           </div>
+          {/* Ordered by what a hiring manager should read first: the one with a
+              business outcome attached, then the AI automation flagship. */}
           <div className="work-list">
             {caseStudies.map((c) => (
               <Link href={`/work/${c.slug}`} className="work-item" key={c.slug}>
@@ -135,33 +139,43 @@ export default function Home() {
                 architecture, implementation, integrations, and deployment.
               </p>
               <p>
-                I founded <b>KROWDLY</b>, where I ship web and mobile applications
+                I co-founded <b>KROWDLY</b>, where I ship web and mobile applications
                 end to end for restaurant, hospitality, and local-service
                 businesses. Along the way I built a high-volume sales CRM for a
                 35-agent team, an AI review-reply pipeline, and a cross-platform
                 client app now in production across 13 locations.
               </p>
               <p>
-                Where I add the most value right now is <b>AI integration</b> —
-                LLM-powered features and agentic workflows built with the Claude API
-                and the Model Context Protocol, always with human-in-the-loop
-                controls. If you need a website, a cross-platform app, or an AI
-                feature built and shipped — not just prototyped — let&apos;s talk.
+                For <b>Bright Bite</b> I do both halves of the job: I built the
+                platform the clinic runs on, and I run its growth — ads, SEO,
+                booking and follow-up automation. The practice went from
+                <b> 40–50 to 90–100 patients a week</b>.
+              </p>
+              <p>
+                Where I add the most value is <b>AI automation</b> — LLM workflows
+                and agentic systems built on the Claude API and the Model Context
+                Protocol, wired into real business processes through webhooks and
+                platform APIs, always behind human-in-the-loop controls. Dedup,
+                error paths, audit logs and approval gates are part of the design,
+                not bolted on after. If you need automation that survives contact
+                with production, let&apos;s talk.
               </p>
             </div>
             <div className="about-side">
               <div className="lbl">What I build</div>
               <ul>
-                <li>Production web apps (React / Next.js)</li>
-                <li>Cross-platform apps (React Native)</li>
-                <li>AI features &amp; agent workflows</li>
-                <li>APIs, data models &amp; integrations</li>
+                <li>LLM workflows &amp; agent systems</li>
+                <li>Webhook &amp; API automation</li>
+                <li>Approval queues &amp; human-in-the-loop gates</li>
+                <li>Production web &amp; cross-platform apps</li>
               </ul>
               <div className="lbl">Stack</div>
               <ul>
-                <li>TypeScript · Node.js · Express</li>
+                <li>Claude API · MCP · agentic workflows</li>
+                <li>n8n · Make.com · webhooks</li>
+                <li>Python / FastAPI · Node.js · TypeScript</li>
                 <li>PostgreSQL / Supabase · AWS</li>
-                <li>Claude API · MCP · LLM apps</li>
+                <li>Next.js · React Native</li>
               </ul>
               <div className="lbl">Based</div>
               <ul>
@@ -189,6 +203,63 @@ export default function Home() {
                 <p>{pr.p}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Hiring — for people evaluating me for a role rather than a project */}
+      <section className="section" id="hiring">
+        <div className="container">
+          <div className="sec-head">
+            <div>
+              <span className="kicker">Hiring</span>
+              <h2>What I&apos;m looking for.</h2>
+            </div>
+          </div>
+          <div className="about-grid">
+            <div>
+              <p>
+                I&apos;m open to <b>full-time, part-time and contract</b> work in
+                AI automation and AI engineering — building the LLM workflows,
+                agent systems and integrations a business actually runs on, and
+                staying to operate them.
+              </p>
+              <p>
+                What I bring that is harder to hire for than the stack: I have
+                shipped these systems <b>alone, end to end, into production</b>,
+                and I have sat with the clients whose businesses depend on them.
+                I ran a B2B sales cycle before I automated one, and I currently
+                run growth for a client as well as their engineering — so I start
+                from what the business needs, not from what is interesting to
+                build.
+              </p>
+              <p>
+                Cairo, <b>UTC+2</b> (UTC+3 April–October). That is a full working
+                day of overlap with European and Gulf teams and a solid US-morning
+                window. I work any schedule and I can start immediately.
+              </p>
+            </div>
+            <div className="about-side">
+              <div className="lbl">Roles</div>
+              <ul>
+                <li>AI Automation / Workflow Engineer</li>
+                <li>AI &amp; LLM Engineer</li>
+                <li>Forward Deployed / Solutions Engineer</li>
+                <li>GTM Engineer</li>
+              </ul>
+              <div className="lbl">Availability</div>
+              <ul>
+                <li>Full-time · part-time · contract</li>
+                <li>Remote worldwide · any schedule</li>
+                <li>Available immediately</li>
+              </ul>
+              <div className="lbl">Working with</div>
+              <ul>
+                <li>Claude API · MCP · agent workflows</li>
+                <li>n8n · Make.com · webhooks</li>
+                <li>Python / FastAPI · Node · Postgres</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -229,8 +300,9 @@ export default function Home() {
               <strong>real.</strong>
             </h2>
             <p>
-              Available for freelance and contract work — web, mobile, and AI.
-              The fastest way to reach me is email.
+              Available for full-time, part-time and contract work — AI automation,
+              LLM systems, and the integrations around them. The fastest way to
+              reach me is email.
             </p>
             <div className="contact-actions">
               <a href={`mailto:${site.email}`} className="btn btn-solid">

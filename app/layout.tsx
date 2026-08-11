@@ -23,27 +23,28 @@ export const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Ahmed Ashraf — Full-stack developer (web, mobile & AI)",
+  title: "Ahmed Ashraf — AI automation engineer (LLM workflows & integrations)",
   description:
-    "I design and ship production web and mobile apps end to end — from the database to the deployed product — with a specialty in AI integration. Real, live systems, not prototypes.",
+    "I design, ship and operate production AI automation — LLM workflows, agent systems and the integrations around them — end to end, with a person in the loop where it matters. Real, live systems, not prototypes.",
   keywords: [
-    "Ahmed Ashraf", "full-stack developer", "React", "Next.js", "React Native",
-    "Node.js", "PostgreSQL", "AI integration", "Claude API", "MCP",
+    "Ahmed Ashraf", "AI automation engineer", "workflow automation", "AI agents",
+    "Claude API", "MCP", "Model Context Protocol", "Make.com", "Python", "FastAPI",
+    "webhooks", "PostgreSQL", "Next.js", "React Native",
   ],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Ahmed Ashraf — Full-stack developer (web, mobile & AI)",
+    title: "Ahmed Ashraf — AI automation engineer (LLM workflows & integrations)",
     description:
-      "Production web and mobile apps, shipped end to end, with a specialty in AI integration.",
+      "Production AI automation — LLM workflows, agent systems and integrations, shipped end to end and running in production.",
     url: siteUrl,
     siteName: "Ahmed Ashraf",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ahmed Ashraf — Full-stack developer (web, mobile & AI)",
+    title: "Ahmed Ashraf — AI automation engineer (LLM workflows & integrations)",
     description:
-      "Production web and mobile apps, shipped end to end, with a specialty in AI integration.",
+      "Production AI automation — LLM workflows, agent systems and integrations, shipped end to end and running in production.",
   },
 };
 
