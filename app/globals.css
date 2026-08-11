@@ -764,34 +764,122 @@ img {
   .proof-grid.phones {
     columns: 1;
   }
-  .work-item {
-    grid-template-columns: 40px 1fr;
-    gap: 16px;
-    padding: 28px 8px;
-    /* Rows are tall on a phone; a vertically centred index number floats in
-       the middle of the card instead of sitting beside the title. */
-    align-items: start;
+  /* ---- Work cards on a phone ----------------------------------------
+     Second round of "I didn't know these were clickable", mobile only.
+     What was actually wrong: the tag pills are outlined rectangles — the
+     universal button shape — while the CTA was plain underlined text, so
+     the NON-clickable elements outranked the clickable one. The CTA also
+     sat 455px down a 505px row, behind a nine-line paragraph, and hairline
+     dividers made the list read as an article rather than as objects.
+     Fix: real cards, a muted tag row, a clamped description, and a solid
+     button. Desktop is untouched — it is validated and fine.
+     -------------------------------------------------------------------- */
+  .work-list {
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
+  .work-item {
+    display: block;
+    padding: 22px 20px;
+    border: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+    border-radius: var(--radius);
+    background: var(--bg);
+  }
+  /* Tap feedback: without it a tap gives no sign it registered. */
+  .work-item:active {
+    background: var(--fog);
+    border-color: var(--ink);
+  }
+  /* Reads as a card index label rather than a giant floating numeral. */
   .work-item .idx {
-    font-size: 26px;
-    line-height: 1.1;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    line-height: 1;
+    color: var(--gray);
+    margin-bottom: 12px;
+  }
+  .work-item .body .t {
+    font-size: 21px;
+  }
+  /* Nobody reads nine lines before deciding to tap — and it pushed the
+     button off the bottom of the card. */
+  .work-item .body .d {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  /* Strip the borders: pills must not out-button the button. */
+  .work-item .body .tags {
+    margin-top: 12px;
+    gap: 4px 8px;
+  }
+  .work-item .tag {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    font-size: 10px;
+  }
+  /* A hairline divider, not a middot: several tags already contain "·"
+     internally ("POSTGRES · RLS · SUPABASE"), so a middot between them
+     made it impossible to see where one tag ended and the next began. */
+  .work-item .tag:not(:first-child) {
+    border-left: 1px solid var(--hair);
+    padding-left: 9px;
+  }
+  /* The affordance. Same visual language as .btn-solid elsewhere on the
+     site, so it reads as a control instantly and still looks like us. */
+  .work-item .wi-cta {
+    /* Auto width here; it only goes full-bleed on true phone widths (see the
+       560px block below). A full-width slab on a tablet is far too heavy. */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: auto;
+    margin-top: 18px;
+    padding: 14px 18px;
+    background: var(--ink);
+    color: var(--bg);
+    border: 1px solid var(--ink);
+    border-radius: var(--radius);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+  .work-item .wi-cta .arrow {
+    font-size: 13px;
   }
   .work-item .go {
     display: none;
   }
-  /* No thumbnail, no arrow, and no hover on touch — the CTA carries the whole
-     affordance here, so give it more presence. */
-  .work-item .wi-cta {
-    margin-top: 18px;
-    font-size: 15px;
-  }
-  /* :hover sticks after a tap on touch devices; suppress the desktop shift. */
+  /* :hover sticks after a tap on touch; suppress the desktop shift. */
   .work-item:hover {
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: var(--bg);
+  }
+  .work-item:hover .body .t {
+    text-decoration: none;
   }
   .nav .nav-hide {
     display: none;
+  }
+}
+
+/* On a phone the button goes full-bleed: it is the primary action of the
+   card and there is no room for it to compete with anything. */
+@media (max-width: 560px) {
+  .work-item .wi-cta {
+    display: flex;
+    width: 100%;
   }
 }
 
